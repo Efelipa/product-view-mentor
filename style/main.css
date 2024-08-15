@@ -12,13 +12,14 @@
     --desktop: 1440px;
     /* Main colors */
     --dark-cyan: hsl(158, 36%, 37%);
+    --darker-cyan: hsl(158, 36%, 22%);
     --cream: hsl(30, 38%, 92%);
     /* Secondary colors */
     --darker-blue: hsl(212, 21%, 14%);
     --grayish-blue: hsl(228, 12%, 48%);
     --white: hsl(0, 0%, 100%);
     /* Typography */
-    --font-size: 14px;
+    --font-size: 16px;
     /* Font */
     --montserrat: 'Montserrat';
     --montserrat-500: 500;
@@ -39,14 +40,19 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
+    font-size: calc(1.5vw + .6em);
     color: var(--grayish-blue);
+    min-block-size: 100vh;
 }
 
 #card {
+    display: flex;
+    flex-direction: column;
+    transition: .2s ease-in;
     background: var(--white);
-    margin: 50px 0;
     max-inline-size: 90%;
     border-radius: .5rem;
+    margin: 30px 0;
 }
 .card--desktop-image {
     display: none;
@@ -62,15 +68,16 @@ body {
 }
 
 /* Info */
-.card--info, .card--info-title {
+.card--info, .card--info-title, .card--info-price, .card--info-button {
     display: flex;
     flex-flow: column wrap;
 }
 .card--info {
-    padding: 20px;
+    padding: 1em;
+    gap: 1em;
 }
 .card--info-title {
-    gap: 10px;
+    gap: .5em;
     .category {
         text-transform: uppercase;
         font-size: .7rem;
@@ -81,11 +88,66 @@ body {
         font-family: var(--fraunces);
     }
 }
-@media screen and (min-width: 35em) {
+/* Card description */
+.card--info-description {
+    font-size: .8em;
+    font-weight: var(--montserrat-500);
+    line-height: 1.7em;
+}
+/* Card prince */
+.card--info-price {
+    flex-flow: row;
+    gap: 20px;
+}
+.main-price {
+    color: var(--dark-cyan);
+    font-size: 1.6em;
+    font-family: var(--fraunces);
+    font-weight: var(--fraunces-700);
+}
+.discount {
+    align-self: center;
+    font-size: .7em;
+    font-weight: var(--montserrat-500);
+    text-decoration: line-through;
+}
+/* Card button */
+.card--info-button {
+    background: var(--dark-cyan);
+    border: none;
+    border-radius: .5em;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: .8em;
+    padding: 15px;
+    color: var(--white);
+    font-family: var(--montserrat);
+    font-weight: var(--montserrat-700);
+    cursor: pointer;
+}
+.card--info-button:hover {
+    background: var(--darker-cyan);
+}
+
+/* Responsive */
+@media screen and (min-width: 42em) {
+    body {
+        font-size: calc(1.5vw + .2em);
+    }
+    #card {
+        max-inline-size: 50%;
+        flex-direction: row;
+    }
     .card--mobile-image {
         display: none;
     }
     .card--desktop-image {
         display: block;
+        max-inline-size: 50%;
+        border-radius: .5rem 0 0 .5rem;
+    }
+    .card--info {
+        align-self: center;
     }
 }
