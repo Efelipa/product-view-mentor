@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url(/assets/fonts/Montserrat-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: 'Fraunces';
+    src: url(/assets/fonts/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+}
+:root {
+    /* Layout */
+    --mobile: 375px;
+    --desktop: 1440px;
+    /* Main colors */
+    --dark-cyan: hsl(158, 36%, 37%);
+    --cream: hsl(30, 38%, 92%);
+    /* Secondary colors */
+    --darker-blue: hsl(212, 21%, 14%);
+    --grayish-blue: hsl(228, 12%, 48%);
+    --white: hsl(0, 0%, 100%);
+    /* Typography */
+    --font-size: 14px;
+    /* Font */
+    --montserrat: 'Montserrat';
+    --montserrat-500: 500;
+    --montserrat-700: 700;
+    --fraunces: 'Fraunces';
+    --fraunces-700: 700;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: var(--cream);
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--grayish-blue);
+}
+
+#card {
+    background: var(--white);
+    margin: 50px 0;
+    max-inline-size: 90%;
+    border-radius: .5rem;
+}
+.card--desktop-image {
+    display: none;
+}
+.card--mobile-image {
+    display: block;
+    border-radius: .5rem .5rem 0 0;
+}
+.fluid-img {
+    max-inline-size: 100%;
+    block-size: auto;
+    object-fit: cover;
+}
+
+/* Info */
+.card--info, .card--info-title {
+    display: flex;
+    flex-flow: column wrap;
+}
+.card--info {
+    padding: 20px;
+}
+.card--info-title {
+    gap: 10px;
+    .category {
+        text-transform: uppercase;
+        font-size: .7rem;
+        letter-spacing: .2rem;
+    }
+    .title {
+        color: var(--darker-blue);
+        font-family: var(--fraunces);
+    }
+}
+@media screen and (min-width: 35em) {
+    .card--mobile-image {
+        display: none;
+    }
+    .card--desktop-image {
+        display: block;
+    }
+}
